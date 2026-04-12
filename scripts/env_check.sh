@@ -120,6 +120,12 @@ echo "== Tooling presence =="
 need_cmd "git" git
 need_cmd "python3" python3
 need_cmd "make" make
+need_cmd "verilator" verilator
+need_cmd "iverilog" iverilog
+need_cmd "vvp" vvp
+need_cmd "yosys" yosys
+need_cmd "sv2v" sv2v
+need_cmd "netlistsvg" netlistsvg
 
 echo
 echo "== Version checks =="
@@ -128,7 +134,6 @@ echo "== Version checks =="
 need_regex "pip3" 'python3 -m pip --version' 'pip[[:space:]]+[0-9]+\.'
 
 # verilator >= 5.036 (cocotb 2.x requirement for Verilator flow)
-need_cmd "verilator" verilator
 ver_out="$(verilator --version)"
 # Example: "Verilator 5.020 2024-01-01 ..."
 have_ver="$(echo "$ver_out" | awk '{print $2}')"
