@@ -6,7 +6,7 @@ WARNING: Windows is not currently supported.
 
 ### Part 1 - System Prerequisite Setup
 
-### 0) Install WSL2 + Ubuntu 24.04 (Windows)
+### 0.0) Install WSL2 + Ubuntu 24.04 (Windows)
 
 1) Open **PowerShell (Admin)** and run:
 
@@ -42,7 +42,7 @@ wsl --update
 wsl -l -v
 ```
 
-### 0.0) Get comfortable using the command line
+### 0.1) Get comfortable using the command line
 
 To see which folder you are in:
 ```bash
@@ -63,7 +63,7 @@ To change your current directory:
 cd directory_name
 ```
 
-### 0.1) Install Git
+### 0.2) Install Git
 
 For Ubuntu (including WSL), use the terminal:
 
@@ -80,7 +80,7 @@ For macOS:
 brew install git
 ```
 
-### 0.2) Set up Git 
+### 0.3) Set up Git 
 
 Set your Git identity:
 
@@ -92,14 +92,14 @@ Set these to the same credentials used for your GitHub account.
 
 It is strongly recommended that you learn the basics of the Git command line, especially `add`, `commit`, `push`, and `pull`.
 
-### 0.3) Install Python venv
+### 0.4) Install Python venv
 ```bash
 sudo apt-get update
 sudo apt-get install libpython3-dev
 sudo apt-get install python3-venv
 ```
 
-### 0.4) Install OSS CAD Suite, sv2v, and netlistsvg
+### 0.5) Install OSS CAD Suite, sv2v, and netlistsvg
 
 This template uses OSS CAD Suite for the core hardware design tools. It includes Verilator, Icarus Verilog, Yosys, and related utilities in one installation.
 
@@ -141,7 +141,7 @@ Each command should print version information or an installation path.
 
 ### Part 2 - Project Environment Setup
 
-### 3) Create and activate a Python virtual environment (venv)
+### 1) Create and activate a Python virtual environment (venv)
 
 If you are not already in the {project-venv}, `cd` into it:
 ```bash
@@ -165,7 +165,7 @@ deactivate
 ```
 Then run the same `source` command for the new project's virtual environment.
 
-### 4) Run environment checks
+### 2) Run environment checks
 
 ```bash
 ./scripts/env_check.sh
@@ -183,17 +183,17 @@ All of the checks should appear as `[OK]`. If anything fails, retrace your steps
 
   These commands help you confirm which Python environment is active.
 
-### 5) Install Coraltb
+### 3) Install Coraltb
 ```bash
 ./scripts/install_coraltb.sh
 ```
 
-### 6) Create Workspace
+### 4) Create Workspace
 ```bash
 ./scripts/create_workspace.sh
 ```
 
-### 7) VS Code with WSL
+### 5) VS Code with WSL
 
 If you are using WSL, open the project from VS Code and install this extension first:
 
