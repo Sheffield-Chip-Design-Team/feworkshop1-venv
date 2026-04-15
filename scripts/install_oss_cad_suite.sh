@@ -292,12 +292,27 @@ install_sv2v() {
 
 npm_global_install() {
 	local package_name="$1"
-	local npm_prefix
-	npm_prefix="$(npm config get prefix 2>/dev/null || true)"
+	local npm_prefix npm_bin user_prefix
+	npm_bin="$(command -v npm || true)"
+	if [[ -z "$npm_bin" ]]; then
+		echo "[FAIL] npm not found in PATH"
+		exit 2
+	fi
+
+	npm_prefix="$("$npm_bin" config get prefix 2>/dev/null || true)"
 	if [[ -n "$npm_prefix" && -w "$npm_prefix" ]]; then
-		npm install -g "$package_name"
+		"$npm_bin" install -g "$package_name"
 	else
-		sudo npm install -g "$package_name"
+		if sudo "$npm_bin" --version >/dev/null 2>&1; then
+			sudo "$npm_bin" install -g "$package_name"
+		else
+			user_prefix="${NPM_GLOBAL_PREFIX:-$HOME/.local}"
+			mkdir -p "$user_prefix"
+			"$npm_bin" config set prefix "$user_prefix"
+			"$npm_bin" install -g "$package_name"
+			echo "[WARN] Installed $package_name to user prefix: $user_prefix"
+			echo "[WARN] Ensure $user_prefix/bin is on PATH to use $package_name"
+		fi
 	fi
 }
 
