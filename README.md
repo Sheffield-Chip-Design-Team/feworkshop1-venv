@@ -1,5 +1,3 @@
-**Note**: This template is to be copied into different projects. Before you use it, replace placeholders such as `{project-venv-name}` and any project-specific repository URLs with your actual project values. Also, edit the create_workspace.sh for your specific project
-
 ## Project Environment Setup (Linux (or WSL) / macOS)
 
 WARNING: Windows is not currently supported.
@@ -104,10 +102,10 @@ sudo apt-get install python3-venv
 ### 0.5) Clone this project repo into a folder
 
 ```bash
-mkdir Project #Can be any name of your choice
-cd Project
-git clone {project-venv-repo-link}
-cd {project-venv-name}
+mkdir sharc-workshop-1 #Can be any name of your choice
+cd sharc-workshop-1
+git clone https://github.com/Sheffield-Chip-Design-Team/feworkshop1-venv.git
+cd feworkshop1-venv
 ```
 
 ### 0.6) Install OSS CAD Suite, sv2v, and netlistsvg
@@ -154,13 +152,13 @@ Each command should print version information or an installation path.
 
 ### 1) Create and activate a Python virtual environment (venv)
 
-If you are not already in the {project-venv-name}, `cd` into it:
+If you are not already in the feworkshop1-venv, `cd` into it:
 ```bash
-cd {project-venv}
+cd feworkshop1-venv
 ```
 Then create the virtual environment. This keeps this project isolated from other projects:
 ```bash
-python3.13 -m venv .venv
+python3 -m venv .venv
 ```
 To use the virtual environment, activate it. Do this every time you start a new terminal:
 ```bash
